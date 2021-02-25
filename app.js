@@ -1,7 +1,9 @@
 
 const buttonsContainer = document.querySelector(".buttons");
 
-buttonsContainer.addEventListener("click" , (event)=> {
+document.body.classList.add("dark-background");
+
+buttonsContainer.addEventListener("click", (event) => {
     const clickedButton = event.target;
 
     Array.from(buttonsContainer.children).forEach(button => {
@@ -11,7 +13,7 @@ buttonsContainer.addEventListener("click" , (event)=> {
     document.body.classList.remove("dark-background");
     document.body.classList.remove("light-background");
 
-    if(clickedButton.classList.contains("dark-theme")){
+    if (clickedButton.classList.contains("dark-theme")) {
         clickedButton.classList.add("clicked");
         document.body.classList.add("dark-background");
 
@@ -21,7 +23,7 @@ buttonsContainer.addEventListener("click" , (event)=> {
 
     }
 
-    else if(clickedButton.classList.contains("light-theme")){
+    else if (clickedButton.classList.contains("light-theme")) {
         clickedButton.classList.add("clicked");
         document.body.classList.add("light-background");
 
@@ -33,11 +35,11 @@ buttonsContainer.addEventListener("click" , (event)=> {
 })
 
 
-function saveCurrentStateToStorage(state){
+function saveCurrentStateToStorage(state) {
 
     let states;
 
-    if(localStorage.getItem("states") === null){
+    if (localStorage.getItem("states") === null) {
         states = [];
     }
 
@@ -46,15 +48,15 @@ function saveCurrentStateToStorage(state){
     }
 
     states.push(state);
-    localStorage.setItem("states",JSON.stringify(states));
+    localStorage.setItem("states", JSON.stringify(states));
 
 }
 
-(function retrieveSateFromStorage(state){
+(function retrieveSateFromStorage(state) {
 
     let states;
 
-    if(localStorage.getItem("states") === null){
+    if (localStorage.getItem("states") === null) {
         states = [];
     }
 
@@ -62,18 +64,22 @@ function saveCurrentStateToStorage(state){
         states = JSON.parse(localStorage.getItem("states"));
     }
 
-    states.forEach(function(state){
+    Array.from(buttonsContainer.children).forEach(button => {
+        button.classList.remove("clicked");
+    })
+
+    states.forEach(function (state) {
 
         // document.body.classList.add("light-background");
 
-        if(states[states.length-1] == true){
-        document.body.classList.add("light-background");
-            
+        if (states[states.length - 1] == true) {
+            document.body.classList.add("light-background");
+            buttonsContainer.children[1].classList.add("clicked");
         }
 
-        else if(states[states.length-1] == false){
-        document.body.classList.add("dark-background");
-            
+        else if (states[states.length - 1] == false) {
+            document.body.classList.add("dark-background");
+            buttonsContainer.children[0].classList.add("clicked");
         }
 
     })
