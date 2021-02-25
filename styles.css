@@ -4,6 +4,7 @@
     box-sizing : border-box;
 }
 
+
 .buttons{
     border : 2px solid indianred;
     display : inline-flex;
@@ -34,5 +35,17 @@
 
 button.clicked{
     opacity: 0.3;
+}
+
+.dark-theme.clicked body{
+    background-color: yellow;
+}
+
+.dark-background{
+    background-color : #001f3f;
+}
+
+.light-background{
+    background-color : #daeaf6;
 }
 
