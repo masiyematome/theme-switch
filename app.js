@@ -66,14 +66,16 @@ function saveCurrentStateToStorage(state){
 
         // document.body.classList.add("light-background");
 
-        if(state){
-            console.log("I am a light theme");
+        if(states[states.length-1] == true){
+        document.body.classList.add("light-background");
+            
         }
 
-        else if(!state){
-            console.log("I am a dark theme");
+        else if(states[states.length-1] == false){
+        document.body.classList.add("dark-background");
+            
         }
-        
+
     })
 
 }());
